@@ -6,8 +6,8 @@ import './CharList.css'
 
 
 export default function CharactersList() {
-  
-  const {error, loading, data} = useCharacters()
+
+  const { error, loading, data } = useCharacters()
   // console.log(error, loading, data);
 
   if (loading) {
@@ -18,14 +18,17 @@ export default function CharactersList() {
   }
   return (
     <div className='charList'>
-      {
-        data.characters.results.map(char => {
-          return <Link to={`/${char.id}`}>
-            <img src={char.image} />
-            <h2>{char.name}</h2>
-          </Link>
-        })
-      }
+      <Link to={'/search'}>Go to Search</Link>
+      <div className='charList'>
+        {
+          data.characters.results.map(char => {
+            return <Link to={`/${char.id}`}>
+              <img src={char.image} />
+              <h2>{char.name}</h2>
+            </Link>
+          })
+        }
+      </div>
     </div>
   )
 }
